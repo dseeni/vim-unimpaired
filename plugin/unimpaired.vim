@@ -257,12 +257,12 @@ endfunction
 function! s:option_map(letter, option, mode) abort
   call s:map('n', '[o'.a:letter, ':'.a:mode.' '.a:option.'<C-R>=<SID>statusbump()<CR><CR>')
   call s:map('n', ']o'.a:letter, ':'.a:mode.' no'.a:option.'<C-R>=<SID>statusbump()<CR><CR>')
-  call s:map('n', 'yo'.a:letter, ':'.a:mode.' <C-R>=<SID>toggle("'.a:option.'")<CR><CR>')
+  " call s:map('n', 'yo'.a:letter, ':'.a:mode.' <C-R>=<SID>toggle("'.a:option.'")<CR><CR>')
 endfunction
 
 call s:map('n', '[ob', ':set background=light<CR>')
 call s:map('n', ']ob', ':set background=dark<CR>')
-call s:map('n', 'yob', ':set background=<C-R>=&background == "dark" ? "light" : "dark"<CR><CR>')
+" call s:map('n', 'yob', ':set background=<C-R>=&background == "dark" ? "light" : "dark"<CR><CR>')
 call s:option_map('c', 'cursorline', 'setlocal')
 call s:option_map('-', 'cursorline', 'setlocal')
 call s:option_map('_', 'cursorline', 'setlocal')
@@ -270,7 +270,7 @@ call s:option_map('u', 'cursorcolumn', 'setlocal')
 call s:option_map('<Bar>', 'cursorcolumn', 'setlocal')
 call s:map('n', '[od', ':diffthis<CR>')
 call s:map('n', ']od', ':diffoff<CR>')
-call s:map('n', 'yod', ':<C-R>=&diff ? "diffoff" : "diffthis"<CR><CR>')
+" call s:map('n', 'yod', ':<C-R>=&diff ? "diffoff" : "diffthis"<CR><CR>')
 call s:option_map('h', 'hlsearch', 'set')
 call s:option_map('i', 'ignorecase', 'set')
 call s:option_map('l', 'list', 'setlocal')
@@ -280,27 +280,27 @@ call s:option_map('s', 'spell', 'setlocal')
 call s:option_map('w', 'wrap', 'setlocal')
 call s:map('n', '[ov', ':set virtualedit+=all<CR>')
 call s:map('n', ']ov', ':set virtualedit-=all<CR>')
-call s:map('n', 'yov', ':set <C-R>=(&virtualedit =~# "all") ? "virtualedit-=all" : "virtualedit+=all"<CR><CR>')
+" call s:map('n', 'yov', ':set <C-R>=(&virtualedit =~# "all") ? "virtualedit-=all" : "virtualedit+=all"<CR><CR>')
 call s:map('n', '[ox', ':set cursorline cursorcolumn<CR>')
 call s:map('n', ']ox', ':set nocursorline nocursorcolumn<CR>')
-call s:map('n', 'yox', ':set <C-R>=<SID>cursor_options()<CR><CR>')
+" call s:map('n', 'yox', ':set <C-R>=<SID>cursor_options()<CR><CR>')
 call s:map('n', '[o+', ':set cursorline cursorcolumn<CR>')
 call s:map('n', ']o+', ':set nocursorline nocursorcolumn<CR>')
-call s:map('n', 'yo+', ':set <C-R>=<SID>cursor_options()<CR><CR>')
+" call s:map('n', 'yo+', ':set <C-R>=<SID>cursor_options()<CR><CR>')
 
 function! s:legacy_option_map(letter) abort
   let y = get(get(g:, 'nremap', {}), 'y', 'y')
   return y . 'o' . a:letter . ':echo "Use ' . y . 'o' . a:letter . ' instead"' . "\<CR>"
 endfunction
 
-if empty(maparg('co', 'n')) && empty(maparg('c', 'n'))
-  nmap <silent><expr> co <SID>legacy_option_map(nr2char(getchar()))
-  nnoremap cop <Nop>
-endif
-if empty(maparg('=o', 'n')) && empty(maparg('=', 'n'))
-  nmap <silent><expr> =o <SID>legacy_option_map(nr2char(getchar()))
-  nnoremap =op <Nop>
-endif
+" if empty(maparg('co', 'n')) && empty(maparg('c', 'n'))
+"   nmap <silent><expr> co <SID>legacy_option_map(nr2char(getchar()))
+"   nnoremap cop <Nop>
+" endif
+" if empty(maparg('=o', 'n')) && empty(maparg('=', 'n'))
+"   nmap <silent><expr> =o <SID>legacy_option_map(nr2char(getchar()))
+"   nnoremap =op <Nop>
+" endif
 
 function! s:setup_paste() abort
   let s:paste = &paste
@@ -324,7 +324,7 @@ nnoremap <silent> <Plug>unimpairedPaste :call <SID>setup_paste()<CR>
 
 call s:map('n', '[op', ':call <SID>setup_paste()<CR>O', '<silent>')
 call s:map('n', ']op', ':call <SID>setup_paste()<CR>o', '<silent>')
-call s:map('n', 'yop', ':call <SID>setup_paste()<CR>0C', '<silent>')
+" call s:map('n', 'yop', ':call <SID>setup_paste()<CR>0C', '<silent>')
 
 " Section: Put
 
