@@ -522,8 +522,8 @@ call UnimpairedMapTransform('string_encode','[y')
 call UnimpairedMapTransform('string_decode',']y')
 call UnimpairedMapTransform('url_encode','[u')
 call UnimpairedMapTransform('url_decode',']u')
-call UnimpairedMapTransform('xml_encode','[x')
-call UnimpairedMapTransform('xml_decode',']x')
+" call UnimpairedMapTransform('xml_encode','[x')
+" call UnimpairedMapTransform('xml_decode',']x')
 
 " Section: Activation
 
